@@ -24,9 +24,9 @@ int i5 = 0;
 int i6 = 0;
 int i7 = 0;
 //the key value of the keyboard
-long int key[8] = {0,0,0,0,0,0,0,0};
+long int key[8] = {16593103,16582903,16615543,16599223,16591063,16623703,16607383,16586983};
+long int off_key = 16580863;
 long int on_key ;
-
 void setup()
 {
   Serial.begin(9600);
@@ -161,6 +161,18 @@ void loop()
            Serial.println("IR_7 close");
          } 
       }  
+      if(results.value == off_key)
+      {
+        digitalWrite(IR_OUT0,0);
+        digitalWrite(IR_OUT1,0);
+        digitalWrite(IR_OUT2,0);
+        digitalWrite(IR_OUT3,0);
+        digitalWrite(IR_OUT4,0);
+        digitalWrite(IR_OUT5,0);
+        digitalWrite(IR_OUT6,0);
+        digitalWrite(IR_OUT7,0);
+        Serial.println("all port off");  
+      }
       irrecv.resume(); // 接收下一个值
       delay(100);  
   }
